@@ -31,8 +31,8 @@
 						<input name='password' type="password" class="form-control" id="InputPassword1" placeholder="Password">
 					</div>
                     <div class="form-group">
-                        <label for="select">Status</label>
-                        <select class="form-control" name="select" id="select">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" id="select">
                             <option value="" selected="selected"></option>
                             <option value="User">User</option>
                             <option value="Admin">Admin</option>

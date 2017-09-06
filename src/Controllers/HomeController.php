@@ -10,6 +10,6 @@ class HomeController{
 
    public function index(){
         $view = new View;
-        $view->render('Home');
+        $view->render('Login');
    }
 }

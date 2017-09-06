@@ -18,6 +18,11 @@ class Database {
 	private function __construct() {
 		$this->_connection = new \mysqli($this->_host, $this->_username, $this->_password, $this->_database);
 	}
+
+	public function query($query){
+        echo $query;
+        return $this->_connection->query($query);
+    }
 	
 	public function query_one($query) {
 		return $this->_connection->query($query)->fetch_assoc();
