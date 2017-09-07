@@ -8,26 +8,34 @@ use Models\UserModel;
  * Time: 21:53
  */
 
-class UserController{
-    public function register(){
+class UserController
+{
+
+    public function register_view()
+    {
+        $view = new View;
+        $view->render('Register');
+    }
+
+    public function register()
+    {
         $user = new UserModel;
         $login = htmlspecialchars(trim($_POST['login']));
-        $password_hash = password_hash(htmlspecialchars(trim($_POST['password'])), PASSWORD_DEFAULT);
+        $password_hash = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
         $status = $_POST['status'];
-        print_r($_POST);
-        $users = $user->insert_user($login, $password_hash, $status);
-       if($users){
-           echo 'zapisalosi';
-       }else{
-           echo 'nezapisalosi';
-       }
+        return  $user->insert_user($login, $password_hash, $status);
     }
-    public function login(){
-        $user = new UserModel;
-        $cur_user = $user->is_registered($_POST['login']);
-        print_r($cur_user);
 
-        //$view = new View;
-        //$view->render('Register');
+    public function login()
+    {
+        $user = new UserModel;
+        if($user->is_right_credentials($_POST['login'],$_POST['password'])){
+            $view = new View;
+            $view->render('Log');
+            return true;
+        }
+        $view = new View(['error' => 'Wrong login information!']);
+        $view->render('Login');
     }
 }
+

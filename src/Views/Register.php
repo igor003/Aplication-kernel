@@ -11,10 +11,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link href='css/style.css' rel='stylesheet'>
-	<link href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js" rel="stylesheet">
-	<link href="bootstrap/css/style.css" rel="stylesheet">
+	<link href='../css/style.css' rel='stylesheet'>
+	<link href="../bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js" rel="stylesheet">
+	<link href="../bootstrap/css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="contatiner">
@@ -44,10 +44,6 @@
 		</div>
 	</div>
 </div>
-<?php
-print_r($users);
-?>
-?>
 </body>
 </html>
 

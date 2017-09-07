@@ -15,8 +15,12 @@ class UserModel{
     public function get_all_users(){
         return $this->connection->query_all('SELECT * FROM user');
     }
+
     public function insert_user($login, $password, $status){
        return $this->connection->query("INSERT INTO `user` (login, password, status) VALUES ('".$login."','".$password."','".$status."')");
     }
-
+    public function is_right_credentials($login, $password){
+        $user = $this->is_registered($login);
+        return  password_verify($password, $user['password']);
+    }
 }

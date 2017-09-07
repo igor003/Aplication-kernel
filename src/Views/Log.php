@@ -5,7 +5,6 @@
  * Date: 06.09.2017
  * Time: 22:01
  */
-echo 'privet';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +19,9 @@ echo 'privet';
 <body>
 <div class="contatiner">
     <div class="row">
-        <a href="user/register">Register</a>
+        <a href="/user/register_view">Register</a>
     </div>
 </div>
 </body>
 </html>
+

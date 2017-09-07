@@ -21,7 +21,7 @@
     <div class="row">
         <div class='log_form'>
             <div class="col-xs-4 col-xs-offset-4">
-                <form action='user/login' method='post'>
+                <form action='/user/login' method='post'>
                     <div class="form-group">
                         <label for="InputEmail1">Login</label>
                         <input name='login' type="login" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter login">
@@ -34,6 +34,18 @@
                     <form>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 text-center">
+            <p class="font-weight-bold text-danger text-center ">
+                <?php
+                if($error){
+                    echo $error;
+                }
+                ?>
+            </p>
+        </div>
+
     </div>
 </div>
 </body>

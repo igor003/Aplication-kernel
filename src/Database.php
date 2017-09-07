@@ -3,7 +3,7 @@
 class Database {
 	private $_connection;
 	private static $_instance;
-	private $_host = "new";
+	private $_host = "newpril";
     private $_username = "root";
 	private $_password = "";
 	private $_database = "New";
