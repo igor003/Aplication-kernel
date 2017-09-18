@@ -1,6 +1,6 @@
 <?php
 use Models\UserModel;
-
+use Models\LogModel;
 /**
  * Created by PhpStorm.
  * User: home
@@ -10,9 +10,12 @@ use Models\UserModel;
 
 class UserController
 {
+    private $params;
+    public function __construct($parametrs){
+    $this->params = $parametrs;
+    }
 
-    public function register_view()
-    {
+    public function register_view(){
         $view = new View;
         $view->render('Register');
     }
@@ -23,15 +26,20 @@ class UserController
         $login = htmlspecialchars(trim($_POST['login']));
         $password_hash = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
         $status = $_POST['status'];
+        $log = new LogModel;
+        $log->inser_record(time(),$_POST['login'],'register');
         return  $user->insert_user($login, $password_hash, $status);
     }
 
     public function login()
     {
         $user = new UserModel;
-        if($user->is_right_credentials($_POST['login'],$_POST['password'])){
-            $view = new View;
-            $view->render('Log');
+        $result = $user->is_right_credentials($_POST['login'],$_POST['password']);
+        if($result['is_right_credentials']){
+            $_SESSION['cur_user'] = $result['user'];
+            $log = new LogModel;
+            $log->insert_record(date("Y-m-d H:i:s"),$_SESSION['cur_user']['login'],'login');
+            header('Location:/documentation/documentation_view');
             return true;
         }
         $view = new View(['error' => 'Wrong login information!']);

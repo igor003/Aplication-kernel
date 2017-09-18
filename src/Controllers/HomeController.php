@@ -7,9 +7,14 @@
  * Time: 21:53
  */
 class HomeController{
+	private $params;
 
-   public function index(){
+    public function __construct($parametrs){
+    $this->params = $parametrs;
+    }
+
+    public function index(){
         $view = new View;
         $view->render('Login');
-   }
+    }
 }

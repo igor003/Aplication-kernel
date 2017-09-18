@@ -13,13 +13,17 @@ class Route{
 
     public function get_controller_and_action(){
         $uri_parts = explode('/', $this->uri);
+       // print_r(boolval($uri_parts));
         if(!$uri_parts[1]){
             $uri_parts[1] = 'Home';
         }
         if(!$uri_parts[2]){
             $uri_parts[2] = 'index';
         }
+        if(!isset($uri_parts[3])){
+            $uri_parts[3] = 'hui';
+        }
 
-        return ['controller'=>ucfirst($uri_parts[1]),'action'=>strtolower($uri_parts[2])];
+        return ['controller'=>ucfirst($uri_parts[1]),'action'=>strtolower($uri_parts[2]),'params'=>$uri_parts[3]];
     }
 }
