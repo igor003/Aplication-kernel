@@ -7,11 +7,6 @@ use Models\LogModel;
  * Time: 20:24
  */
 class LogController{
-    private $params;
-
-    public function __construct($parametrs){
-    $this->params = $parametrs;
-    }
 
     public function  log_view(){
     	$log = new LogModel;

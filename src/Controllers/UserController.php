@@ -10,11 +10,6 @@ use Models\LogModel;
 
 class UserController
 {
-    private $params;
-    public function __construct($parametrs){
-    $this->params = $parametrs;
-    }
-
     public function register_view(){
         $view = new View;
         $view->render('Register');

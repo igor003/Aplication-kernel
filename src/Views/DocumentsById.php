@@ -36,7 +36,7 @@
                 if($filed['type'] ==='file'){
             ?>
                 <li role="presentation">
-                    <a  href=<?php echo '/documentation/download_file/'.$filed['name']?>>
+                    <a  href=<?php echo '/documentation/download_file/'.urlencode($filed['name'])?>>
                          <h1><?php echo $filed['name'] ?></h1>
                     </a>
                 </li>
