@@ -20,7 +20,7 @@ class Database {
 	}
 
 	public function query($query){
-        // echo $query;
+         //echo $query;
         return $this->_connection->query($query);
     }
 	

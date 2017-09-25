@@ -19,7 +19,9 @@
 </head>
 <body>
 <div class="contatiner">
-	
+	 <div class='btn btn-default'>
+       <a href='/documentation/documentation_view'>Back</a>
+    </div>
     <div class="row">	
     	<div class="col-xs-4 col-xs-offset-4">
 	    <table class="table">

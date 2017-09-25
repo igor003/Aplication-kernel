@@ -1,6 +1,7 @@
 <?php
 use Models\UserModel;
 use Models\LogModel;
+use validation\Validator;
 /**
  * Created by PhpStorm.
  * User: home
@@ -17,13 +18,20 @@ class UserController
 
     public function register()
     {
-        $user = new UserModel;
-        $login = htmlspecialchars(trim($_POST['login']));
-        $password_hash = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
-        $status = $_POST['status'];
-        $log = new LogModel;
-        $log->inser_record(time(),$_POST['login'],'register');
-        return  $user->insert_user($login, $password_hash, $status);
+        //$login = Validator::valid('login',5,'true','login');
+        $password = Validator::valid('password',5,'true','password');
+       //print_r($login);
+        print_r($password);
+
+        // $user = new UserModel;
+        // $login = htmlspecialchars(trim($_POST['login']));
+        // $password_hash = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
+        // $status = $_POST['status'];
+        // $log = new LogModel;
+        // $log->insert_record(date("Y-m-d H:i:s"),$_POST['login'],'registered');
+        // header('Location:/documentation/documentation_view');
+        // return  $user->insert_user($login, $password_hash, $status);
+    
     }
 
     public function login()

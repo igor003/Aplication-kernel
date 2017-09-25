@@ -19,5 +19,8 @@ class DocumentationModel{
     public function get_by_parrent_id($parrent_id){
         return $this->connection->query_all("SELECT * FROM `documentation` WHERE parent_id = ".$parrent_id);
     }
+    public function delete ($id){
+        return $this->connection->query("DELETE FROM `documentation` WHERE id=".$id);
+    }
 
 }
