@@ -15,8 +15,11 @@ class LogController{
         $view->render('Log');
     }
 
-    public function insert(){
-    	
-    	
+    public function filter(){
+    	print_r($_POST);
+    	$log = new LogModel;
+        $filter_date = $log->get_by_date($_POST['datepicker']);
+        $view = new View(['filter_data'=>$filter_date]);
+        $view->render('Filter_log');
     }
 }

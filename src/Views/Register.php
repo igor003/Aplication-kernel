@@ -18,6 +18,19 @@
 </head>
 <body>
 <div class="contatiner">
+	<div class=" errors row">
+		<div class="red text-center">
+		<?php
+		if($errors){
+			foreach($errors as $error){
+         ?>
+         	<h5><?php echo $error['0']  ?></h5>
+         <?php
+			}
+		}
+		?>
+		</div>
+	</div>
 	<div class="row">
 		<div class='log_form'>
 			<div class="col-xs-4 col-xs-offset-4">
@@ -43,6 +56,7 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
 </body>
 </html>

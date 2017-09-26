@@ -10,9 +10,11 @@
 </head>
 <body>
   <div class="container">
-    <div class='btn btn-default'>
-       <a href='/documentation/documentation_view'>Back</a>
-    </div>
+    <a href="/documentation/documentation_view">
+                    <button type="button" class="btn btn-info">
+                        Home
+                    </button>
+                </a>
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4 text-center">
         <form enctype="multipart/form-data" action="/documentation/add_file" method="POST">
@@ -20,6 +22,7 @@
             <label for="upload"><h1>Adauga file</h1></label>
             <input type="file" name="uploadfile" class="form-control" id="upload" placeholder="Adauga file">
             <input name='parent_id' type="hidden" value=<?php echo $id ?>>
+            <input type="hidden" name="previous_url" value=<?php echo $_SERVER['HTTP_REFERER']?>>
           </div>
           <div class="form-group">
             <input type="submit">

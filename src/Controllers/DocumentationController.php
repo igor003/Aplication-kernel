@@ -10,6 +10,7 @@ class DocumentationController
     {
         $documentation = new DocumentationModel;
         $doc = $documentation->get_root_folders();
+        //print_r($doc);
         $view = new View(['result' => $doc]);
         $view->render('Documentation');
     }
@@ -28,12 +29,14 @@ class DocumentationController
 
     public function add_folder()
     {
+        //print_r($_POST['name_folder']);
+        //exit;
        if($_POST['name_folder']!==''){
             $documentation = new DocumentationModel;
             if ($documentation->insert_in_table($_POST['name_folder'], 'folder', Route::getInstance()->get_first_param(), date("Y-m-d H:i:s"))) {
                 $log = new LogModel;
                 $log->insert_record(date("Y-m-d H:i:s"), $_SESSION['cur_user']['login'], 'create folder -' . $_POST['name_folder']);
-                header('Location:/documentation/documentation_view');
+                header('Location:'.$_POST['previous_url']);
             }
         }
            
@@ -43,14 +46,17 @@ class DocumentationController
     public function add_file()
     {
         if ($_FILES['file_name']['error'] == 0) {
+
             $uploadfile = "documents/" . $_FILES['uploadfile']['name'];
             move_uploaded_file($_FILES['uploadfile']['tmp_name'], $uploadfile);
             $documentation = new DocumentationModel;
             if ($documentation->insert_in_table($_FILES['uploadfile']['name'], 'file', $_POST['parent_id'], date("Y-m-d H:i:s"))) {
                 $log = new LogModel;
                 $log->insert_record(date("Y-m-d H:i:s"), $_SESSION['cur_user']['login'], 'added file  ' . $_FILES['uploadfile']['name']);
-                header('Location:'.$_SERVER['HTTP_REFERER']);
+                header('Location:'.$_POST['previous_url']);
             }
+        }else{
+            echo 'hui';
         }
     }
 
@@ -81,9 +87,10 @@ class DocumentationController
     public function delete(){
 
         $documentation = new DocumentationModel;
+        $deleted_doc = $documentation->get_by_id(Route::getInstance()->get_first_param());
         $documentation->delete(Route::getInstance()->get_first_param());
         $log = new LogModel;
-        $log->insert_record(date("Y-m-d H:i:s"), $_SESSION['cur_user']['login'], 'deleted file -' . Route::getInstance()->get_first_param());
+        $log->insert_record(date("Y-m-d H:i:s"), $_SESSION['cur_user']['login'], 'deleted file -' . $deleted_doc['name']);
         header('Location:'.$_SERVER['HTTP_REFERER']);
     }
 }

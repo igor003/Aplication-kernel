@@ -22,30 +22,16 @@
     <link rel="stylesheet" href="../js/jquery-ui.structure.css">
     <link rel="stylesheet" href="../js/jquery-ui.theme.css">
    	<link href='../css/style.css' rel='stylesheet'>
-    <script type="text/javascript">
-        $(function(){
-            $("#datepicker").datepicker({
-            	 dateFormat: "yy-mm-dd",
-            	 showAnim: "slideDown",
-            	 showOtherMonths: true,
-            	 showOn: "button",
-		         buttonImage: "images/calendar.gif",
-		         buttonImageOnly: true,
-		         buttonText: "Select date"
-            	
-            });
-       });
-    </script>
 </head>
 <body>
 <div class="contatiner">
-     <a href='/documentation/documentation_view'>
+     <a href=<?php echo $_SERVER['HTTP_REFERER']?>>
                     <button type="button" class="btn btn-info">
                         Back
                     </button>
                 </a>
     <div class="row">	
-    	<div class="col-xs-6 col-xs-offset-2">
+    	<div class="col-xs-6 col-xs-offset-3">
 	    <table class="table">
 			<thead>
 				<tr>
@@ -56,7 +42,7 @@
 			</thead>
 			<tbody>
 				<?php
-					foreach($result as $value){
+					foreach($filter_data as $value){
 				?>
 					<tr>
 					  <td><?php echo $value['data'] ?></td>
@@ -69,13 +55,7 @@
 			</tbody>
 		</table>
 		</div>
-		<div class="col-xs-4">
-			<form action='/log/filter' method='POST'>
-				<input name='datepicker' type="text" id="datepicker" />
-				<input type="submit">
-			</form>
-			
-		</div>
+		
  	</div>
 </div>
 </body>

@@ -24,4 +24,7 @@ class LogModel
     public function insert_record($time,$login,$action){
     	return $this->connection->query("INSERT INTO log (data,login,action) VALUES ('".$time."','".$login."','".$action."')");
     }
+    public function get_by_date($date){
+        return $this->connection->query_all("SELECT * FROM `log` WHERE data LIKE '". $date."%'");
+    }
 }

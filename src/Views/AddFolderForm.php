@@ -10,15 +10,18 @@
 </head>
 <body>
   <div class="container">
-    <div class='btn btn-default'>
-      <a href='/documentation/documentation_view'>Back</a>
-    </div>
+    <a href="/documentation/documentation_view">
+                    <button type="button" class="btn btn-info">
+                        Home
+                    </button>
+                </a>
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4 text-center">
         <form  action=<?php echo"/documentation/add_folder/".$id ?> method="POST">
             <div class="form-group">
               <label for="folder"><h1>Add folder</h1></label>
               <input type="text" name="name_folder" class="form-control" id="folder" placeholder="Add folder">
+              <input type="hidden" name='previous_url' value=<?php echo $_SERVER['HTTP_REFERER']?>>
             </div>
             <div class="form-group">
               <input type="submit">

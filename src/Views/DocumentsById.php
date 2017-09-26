@@ -37,9 +37,20 @@
                         Add file
                     </button>
                 </a>
+               
             <?php
             }
             ?>
+             <a href="/documentation/documentation_view">
+                    <button type="button" class="btn btn-info">
+                        Home
+                    </button>
+                </a>
+                <a href=<?php echo $_SERVER['HTTP_REFERER']?>>
+                    <button type="button" class="btn btn-info">
+                        Back
+                    </button>
+                </a>
         </div>
     </div>
 	<div class="row">

@@ -39,6 +39,7 @@
                         Add Folder
                     </button>
                 </a>
+                
 			<?php
 		 	}
 			 ?>
@@ -64,7 +65,7 @@
                     foreach($result as $filed){
                     ?>
                         <tr>
-                        <td><a href=<?php echo '/documentation/get_files_by_parent_id/'.$filed['id']?>><h1><?php echo $filed['name'] ?></h1></a></td>
+                        <td><a href=<?php echo '/documentation/get_files_by_parent_id/'.$filed['id']?>><h2><?php echo $filed['name'] ?></h2></a></td>
                     <?php
                     if($_SESSION['cur_user']['status'] === 'admin'){
                     ?>

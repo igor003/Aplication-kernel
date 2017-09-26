@@ -22,5 +22,8 @@ class DocumentationModel{
     public function delete ($id){
         return $this->connection->query("DELETE FROM `documentation` WHERE id=".$id);
     }
+    public function get_by_id($id){
+        return $this->connection->query_one("SELECT * FROM `documentation` WHERE id =".$id."");
+    }
 
 }

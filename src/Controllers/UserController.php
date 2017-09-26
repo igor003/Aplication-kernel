@@ -18,19 +18,40 @@ class UserController
 
     public function register()
     {
-        //$login = Validator::valid('login',5,'true','login');
-        $password = Validator::valid('password',5,'true','password');
-       //print_r($login);
-        print_r($password);
+        $errors = [];
+        $val = new Validator;
+        $login = $val-> valid_login('login',5,'true');
+        if(!is_array($login)){
+            $login_valid = $login;
+        }else{
+            $errors[] = $login;
+        }
 
-        // $user = new UserModel;
-        // $login = htmlspecialchars(trim($_POST['login']));
-        // $password_hash = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
-        // $status = $_POST['status'];
-        // $log = new LogModel;
-        // $log->insert_record(date("Y-m-d H:i:s"),$_POST['login'],'registered');
-        // header('Location:/documentation/documentation_view');
-        // return  $user->insert_user($login, $password_hash, $status);
+        $password = $val->valid_password('password',5,'true');
+        if(!is_array($password)){
+            $password_hash = $password;
+        }else{
+            $errors[] = $password;
+        }
+
+        $status = $val->valid_input('status',3,'true');
+         if(!is_array($status)){
+            $status_valid = $status;
+        }else{
+            $errors[] = $status;
+        }
+
+        if( empty($errors)){
+        $user = new UserModel;
+        $log = new LogModel;
+        $log->insert_record(date("Y-m-d H:i:s"),$_POST['login'],'registered');
+        header('Location:/documentation/documentation_view');
+        return  $user->insert_user( $login_valid, $password_hash, $status_valid );
+        }else{
+             $view = new View(['errors'=>$errors]);
+             $view->render('Register');
+        }
+
     
     }
 
